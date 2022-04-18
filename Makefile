@@ -1,4 +1,5 @@
-LIBFT	=
+LIBFT	=	libft/ft_strncmp.c \
+			libft/ft_split.c
 
 UTILITY =
 
