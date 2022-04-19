@@ -1,7 +1,9 @@
 LIBFT	=	libft/ft_strncmp.c \
-			libft/ft_split.c
+			libft/ft_split.c \
+			libft/ft_strjoin.c \
+			libft/ft_strlen.c \
 
-UTILITY =
+UTILITY =	utils.c
 
 SRCS =	$(LIBFT) \
 		$(UTILITY) \
