@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:32:56 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/19 16:32:32 by vmusunga         ###   ########.fr       */
+/*   Updated: 2022/04/20 19:08:39 by vic              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*get_path(char **env, char *cmd)
 {
 	int x;
-	int i;
+	char *tmp;
 	char *path;
 	char **path_tab;
 
@@ -23,22 +23,24 @@ char	*get_path(char **env, char *cmd)
 	while (ft_strncmp(env[x], "PATH=", 5) != 0)
 		x++;
 	path_tab = ft_split(env[x] + 5, ':');
-	i = 0;
-	while (path_tab[i])
+	x = 0;
+	while (path_tab[x])
 	{
-		path = ft_strjoin(path_tab[i], cmd);
+		tmp = ft_strjoin(path_tab[x], "/");
+		path = ft_strjoin(tmp, cmd);
+		free(tmp);
 		if (access(path, F_OK) == 0)
-		{
-			printf("%s", path);
 			return (path);
-		}
 		free(path);
-		i++;
+		x++;
 	}
-	i = -1;
-	while (path_tab[++i])
-		free(path_tab[i]);
+	x = -1;
+	while (path_tab[++x])
+		free(path_tab[x]);
 	free(path_tab);
+	// printf("%s\n", path);
+	if (!path)
+		error("Path not found");
 	return (0);
 }
 
@@ -51,8 +53,8 @@ void	executer(char *argv, char **env) //if (!path)
 	i = -1;
 	cmd = ft_split(argv, ' ');
 	path = get_path(env, cmd[0]);
-	if (execve(path, cmd, env) == -1)
-		error(4);
+	execve(path, cmd, env);
+	if (!path)
 	while (cmd[++i])
 		free(cmd[i]);
 	free(cmd);
@@ -60,9 +62,9 @@ void	executer(char *argv, char **env) //if (!path)
 	return ;
 }
 
-void	error(int tag)
+void	error(char *msg)
 {
-	//write(2, "Error", 5);
-	printf("Error%d\n", tag);
+	write(2, msg, ft_strlen(msg));
+	// printf("Error%d\n", tag);
 	exit(EXIT_FAILURE);
 }

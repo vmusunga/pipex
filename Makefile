@@ -13,10 +13,8 @@ NAME	=	pipex
 CC		=	gcc
 FLAGS	=	-Wall -Werror -Wextra 
 INCLUDE =	-I include
-BONUS =
 
 OBJS	=		$(SRCS:.c=.o)
-OBJS_BONUS =	$(BONUS:.c=.o)
 EXEC = pipex
 
 RM		=		@rm -f
@@ -29,11 +27,8 @@ $(NAME):	$(OBJS)
 
 all:		$(NAME)
 
-bonus:		$(OBJS_BONUS)
-			$(CC) $(FLAGS) $(OBJS_BONUS)
-
 clean:
-			$(RM) $(OBJS) $(OBJS_BONUS)
+			$(RM) $(OBJS)
 
 fclean:		clean
 			$(RM) $(EXEC)

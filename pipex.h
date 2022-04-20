@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:50:25 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/19 15:53:41 by vmusunga         ###   ########.fr       */
+/*   Updated: 2022/04/20 18:59:06 by vic              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
-#define PIPEX_H
+# define PIPEX_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <fcntl.h>
@@ -36,6 +36,6 @@ size_t	ft_strlen(const char *str);
 /// UTILS
 char	*get_path(char **env, char *cmd);
 void	executer(char *argv, char **env);
-void	error();
+void	error(char *msg);
 
 #endif
