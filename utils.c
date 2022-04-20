@@ -6,7 +6,7 @@
 /*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:32:56 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/20 19:08:39 by vic              ###   ########.fr       */
+/*   Updated: 2022/04/20 19:41:47 by vic              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*get_path(char **env, char *cmd)
 {
-	int x;
-	char *tmp;
-	char *path;
-	char **path_tab;
+	int		x;
+	char	*tmp;
+	char	*path;
+	char	**path_tab;
 
 	x = 0;
 	while (ft_strncmp(env[x], "PATH=", 5) != 0)
@@ -38,33 +38,33 @@ char	*get_path(char **env, char *cmd)
 	while (path_tab[++x])
 		free(path_tab[x]);
 	free(path_tab);
-	// printf("%s\n", path);
-	if (!path)
-		error("Path not found");
-	return (0);
+	return (NULL);
 }
 
-void	executer(char *argv, char **env) //if (!path)
+void	executer(char *argv, char **env)
 {
-	int i;
-	char *path;
-	char **cmd;
+	int		i;
+	char	*path;
+	char	**cmd;
 
 	i = -1;
 	cmd = ft_split(argv, ' ');
 	path = get_path(env, cmd[0]);
 	execve(path, cmd, env);
 	if (!path)
-	while (cmd[++i])
-		free(cmd[i]);
-	free(cmd);
-	free(path);
+	{
+		while (cmd[++i])
+			free(cmd[i]);
+		free(cmd);
+		error("Path not found");
+	}
+	else
+		free(path);
 	return ;
 }
 
 void	error(char *msg)
 {
 	write(2, msg, ft_strlen(msg));
-	// printf("Error%d\n", tag);
 	exit(EXIT_FAILURE);
 }

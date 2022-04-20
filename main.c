@@ -6,15 +6,17 @@
 /*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:15:19 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/20 19:01:03 by vic              ###   ########.fr       */
+/*   Updated: 2022/04/20 19:49:13 by vic              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/// 2 unknown cmds = 2 error msgs
+
 void	child_process(char **argv, char **env, int *fd)
 {
-	int file1;
+	int	file1;
 
 	file1 = open(argv[1], O_RDONLY);
 	if (file1 == -1)
@@ -22,14 +24,13 @@ void	child_process(char **argv, char **env, int *fd)
 	dup2(file1, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
-	// close(fd[1]);
 	executer(argv[2], env);
 	close(file1);
 }
 
 void	parent_process(char **argv, char **env, int *fd)
 {
-	int file2;
+	int	file2;
 
 	file2 = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	if (file2 == -1)
@@ -38,14 +39,13 @@ void	parent_process(char **argv, char **env, int *fd)
 	dup2(file2, STDOUT_FILENO);
 	close(fd[1]);
 	executer(argv[3], env);
-	// close(fd[0]);
 	close(file2);
 }
 
 int	main(int ac, char **argv, char **env)
 {
-	int fd[2];
-	pid_t pid1;
+	int		fd[2];
+	pid_t	pid1;
 
 	if (ac != 5)
 		error("Wrong number of arguments");

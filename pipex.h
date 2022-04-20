@@ -6,7 +6,7 @@
 /*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:50:25 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/20 18:59:06 by vic              ###   ########.fr       */
+/*   Updated: 2022/04/20 19:42:34 by vic              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # include <fcntl.h>
 # include <string.h>
 
-typedef struct	s_utils
+typedef struct s_utils
 {
-	char **path_tab;
-	int *end;
+	char	**path_tab;
+	int		*end;
 }				t_utils;
 
 /// LIBFT
