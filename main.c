@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:15:19 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/20 19:49:13 by vic              ###   ########.fr       */
+/*   Updated: 2022/04/25 14:23:07 by vmusunga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /// 2 unknown cmds = 2 error msgs
 
-void	child_process(char **argv, char **env, int *fd)
+static int	child_process(char **argv, char **env, int *fd)
 {
 	int	file1;
 
@@ -26,9 +26,10 @@ void	child_process(char **argv, char **env, int *fd)
 	close(fd[0]);
 	executer(argv[2], env);
 	close(file1);
+	return (0);
 }
 
-void	parent_process(char **argv, char **env, int *fd)
+static int	parent_process(char **argv, char **env, int *fd)
 {
 	int	file2;
 
@@ -40,6 +41,7 @@ void	parent_process(char **argv, char **env, int *fd)
 	close(fd[1]);
 	executer(argv[3], env);
 	close(file2);
+	return (0);
 }
 
 int	main(int ac, char **argv, char **env)
@@ -55,7 +57,10 @@ int	main(int ac, char **argv, char **env)
 	if (pid1 == -1)
 		error("Fork error");
 	if (pid1 == 0)
-		child_process(argv, env, fd);
+	{
+		if (!child_process(argv, env, fd))
+			error("Command not found");
+	}
 	waitpid(pid1, NULL, 0);
 	parent_process(argv, env, fd);
 	return (0);

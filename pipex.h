@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:50:25 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/20 19:42:34 by vic              ###   ########.fr       */
+/*   Updated: 2022/04/25 14:13:48 by vmusunga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ size_t	ft_strlen(const char *str);
 
 /// UTILS
 char	*get_path(char **env, char *cmd);
-void	executer(char *argv, char **env);
+int		executer(char *argv, char **env);
 void	error(char *msg);
 
 #endif

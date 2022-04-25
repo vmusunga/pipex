@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vic <vic@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:32:56 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/20 19:41:47 by vic              ###   ########.fr       */
+/*   Updated: 2022/04/25 14:23:45 by vmusunga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*get_path(char **env, char *cmd)
 	return (NULL);
 }
 
-void	executer(char *argv, char **env)
+int	executer(char *argv, char **env)
 {
 	int		i;
 	char	*path;
@@ -56,11 +56,11 @@ void	executer(char *argv, char **env)
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		error("Path not found");
+		return (-1);
 	}
 	else
 		free(path);
-	return ;
+	return (0);
 }
 
 void	error(char *msg)

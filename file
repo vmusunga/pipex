@@ -1,6 +1,6 @@
 total 96$
 -rw-r--r--   1 vmusunga  2020_roma    490 Apr 25 13:23 Makefile$
--rwxr-xr-x   1 vmusunga  2020_roma    769 Apr 25 14:22 file$
+-rwxr-xr-x   1 vmusunga  2020_roma    769 Apr 25 14:20 file$
 -rw-r--r--   1 vmusunga  2020_roma     33 Apr 25 13:37 file1$
 -rw-r--r--   1 vmusunga  2020_roma      0 Apr 25 14:20 file2$
 drwxr-xr-x@ 51 vmusunga  2020_roma   1734 Apr 25 14:22 libft$

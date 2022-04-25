@@ -1,0 +1,12 @@
+Makefile
+file
+file1
+file2
+libft
+main.c
+main.o
+pipex
+pipex.dSYM
+pipex.h
+utils.c
+utils.o
