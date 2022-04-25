@@ -6,7 +6,7 @@
 /*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:32:56 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/25 14:23:45 by vmusunga         ###   ########.fr       */
+/*   Updated: 2022/04/25 17:21:46 by vmusunga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ int	executer(char *argv, char **env)
 void	error(char *msg)
 {
 	write(2, msg, ft_strlen(msg));
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
