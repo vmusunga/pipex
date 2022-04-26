@@ -6,13 +6,11 @@
 /*   By: vmusunga <vmusunga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:15:19 by vmusunga          #+#    #+#             */
-/*   Updated: 2022/04/25 17:22:40 by vmusunga         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:47:42 by vmusunga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-/// 2 unknown cmds = 2 error msgs
 
 static int	child_process(char **argv, char **env, int *fd)
 {
